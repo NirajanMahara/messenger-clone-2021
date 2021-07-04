@@ -5,6 +5,13 @@ function App() {
   return (
     <div className='App'>
       <h1>React Firebase Facebook Messenger Clone 🚀</h1>
+
+      <input />
+      <button>Send Message</button>
+      {/* <input /> */}
+      {/* <button /> */}
+
+      {/* <Messages themselves /> */}
     </div>
   );
 }
