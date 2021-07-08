@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button } from '@material-ui/core';
+import { Button, FormControl, InputLabel, Input } from '@material-ui/core';
 import './App.css';
 
 function App() {
@@ -27,20 +27,23 @@ function App() {
       <h1>React Firebase Facebook Messenger Clone 🚀</h1>
 
       <form>
-        <input
-          value={input}
-          onChange={(event) => setInput(event.target.value)}
-        />
+        <FormControl>
+          <InputLabel>Enter a message...💭</InputLabel>
+          <Input
+            value={input}
+            onChange={(event) => setInput(event.target.value)}
+          />
 
-        <Button
-          disabled={!input}
-          variant='contained'
-          color='primary'
-          type='submit'
-          onClick={sendMessage}
-        >
-          Send Message
-        </Button>
+          <Button
+            disabled={!input}
+            variant='contained'
+            color='primary'
+            type='submit'
+            onClick={sendMessage}
+          >
+            Send Message
+          </Button>
+        </FormControl>
       </form>
 
       {messages.map((message) => (
