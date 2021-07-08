@@ -31,7 +31,7 @@ function App() {
           onChange={(event) => setInput(event.target.value)}
         />
 
-        <button type='submit' onClick={sendMessage}>
+        <button disabled={!input} type='submit' onClick={sendMessage}>
           Send Message
         </button>
       </form>
