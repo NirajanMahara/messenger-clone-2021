@@ -5,7 +5,10 @@ import Message from './Message';
 
 function App() {
   const [input, setInput] = useState('');
-  const [messages, setMessages] = useState(['Morning', 'Hello', 'Whats up']);
+  const [messages, setMessages] = useState([
+    { username: 'nirajan', text: 'Whats up 🤙' },
+    { username: 'ninja', text: 'Lets go 🐱‍👤' },
+  ]);
   const [username, setUsername] = useState('');
 
   // useState =  setting a variable || the unique way to set-up variable
@@ -31,7 +34,7 @@ function App() {
     event.preventDefault();
 
     // Spread out the messages array and append to input
-    setMessages([...messages, input]);
+    setMessages([...messages, { username: username, text: input }]);
 
     // Input becomes empty string again
     setInput('');
@@ -63,7 +66,7 @@ function App() {
       </form>
 
       {messages.map((message) => (
-        <Message text={message} />
+        <Message username={message.username} text={message.text} />
       ))}
     </div>
   );
