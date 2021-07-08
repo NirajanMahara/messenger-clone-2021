@@ -22,8 +22,16 @@ function App() {
     <div className='App'>
       <h1>React Firebase Facebook Messenger Clone 🚀</h1>
 
-      <input value={input} onChange={(event) => setInput(event.target.value)} />
-      <button onClick={sendMessage}>Send Message</button>
+      <form>
+        <input
+          value={input}
+          onChange={(event) => setInput(event.target.value)}
+        />
+
+        <button type='submit' onClick={sendMessage}>
+          Send Message
+        </button>
+      </form>
 
       {messages.map((message) => (
         <p>{message}</p>
