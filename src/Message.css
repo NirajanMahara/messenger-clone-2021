@@ -1,5 +1,28 @@
+/* Style => Normal */
 .message {
   padding: 10px;
   margin: 10px;
   max-width: fit-content;
+}
+
+/* Style => if it's a user logged-in */
+.message__user {
+  margin-left: auto;
+  color: white;
+  text-align: left !important;
+}
+
+/* [:] !important because to overriding styles of material-ui */
+
+/* Style => if it's a user logged-in */
+.message__userCard {
+  background-color: #0b81ff !important;
+  border-radius: 35px !important;
+  color: white !important;
+}
+
+/* Style => if it's a guest users */
+.message__guestCard {
+  background-color: #e9e9eb !important;
+  border-radius: 35px !important;
 }
