@@ -11,6 +11,9 @@ function App() {
   const sendMessage = (event) => {
     // all the logic to send the message goes here...
 
+    // Prevent default refreshing when enter submit form button
+    event.preventDefault();
+
     // Spread out the messages array and append to input
     setMessages([...messages, input]);
 
