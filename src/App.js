@@ -48,7 +48,7 @@ function App() {
       </form>
 
       {messages.map((message) => (
-        <Message />
+        <Message text={message} />
       ))}
     </div>
   );
