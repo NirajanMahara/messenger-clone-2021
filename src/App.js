@@ -4,6 +4,7 @@ import './App.css';
 import Message from './Message';
 import db from './firebase';
 import firebase from 'firebase'; // call from the actual module, && `db` above is from the config file
+import FlipMove from 'react-flip-move';
 
 function App() {
   const [input, setInput] = useState('');
@@ -25,7 +26,9 @@ function App() {
     db.collection('messages')
       .orderBy('timestamp', 'desc')
       .onSnapshot((snapshot) => {
-        setMessages(snapshot.docs.map((doc) => doc.data()));
+        setMessages(
+          snapshot.docs.map((doc) => ({ id: doc.id, message: doc.data() }))
+        );
       });
   }, []); // [] no dependencies, run once when the 'App' component loads
 
@@ -84,9 +87,11 @@ function App() {
         </FormControl>
       </form>
 
-      {messages.map((message) => (
-        <Message username={username} message={message} />
-      ))}
+      <FlipMove>
+        {messages.map(({ id, message }) => (
+          <Message key={id} username={username} message={message} />
+        ))}
+      </FlipMove>
     </div>
   );
 }
