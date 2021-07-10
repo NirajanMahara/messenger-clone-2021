@@ -5,6 +5,8 @@ import Message from './Message';
 import db from './firebase';
 import firebase from 'firebase'; // call from the actual module, && `db` above is from the config file
 import FlipMove from 'react-flip-move';
+import SendIcon from '@material-ui/icons/Send';
+import { IconButton } from '@material-ui/core';
 
 function App() {
   const [input, setInput] = useState('');
@@ -79,15 +81,15 @@ function App() {
             onChange={(event) => setInput(event.target.value)}
           />
 
-          <Button
+          <IconButton
             disabled={!input}
             variant='contained'
             color='primary'
             type='submit'
             onClick={sendMessage}
           >
-            Send Message
-          </Button>
+            <SendIcon />
+          </IconButton>
         </FormControl>
       </form>
 
