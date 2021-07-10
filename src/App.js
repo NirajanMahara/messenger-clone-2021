@@ -2,17 +2,29 @@ import React, { useState, useEffect } from 'react';
 import { Button, FormControl, InputLabel, Input } from '@material-ui/core';
 import './App.css';
 import Message from './Message';
+import db from './firebase';
 
 function App() {
   const [input, setInput] = useState('');
-  const [messages, setMessages] = useState([
-    { username: 'nirajan', text: 'Whats up 🤙' },
-    { username: 'ninja', text: 'Lets go 🐱‍👤' },
-  ]);
+  const [messages, setMessages] = useState([]);
   const [username, setUsername] = useState('');
 
   // useState =  setting a variable || the unique way to set-up variable
   // useEffect = run code on a condition || block/piece/snippet of code that executed once the condition meet or component loads
+
+  useEffect(() => {
+    // run once when the 'App' component loads | ON condition
+    // also called listener => because listening for any changes and run snapshot and other
+
+    // Pulling 'messages' (collection) right from the (firestore db)
+    // .onSnapshot => it will run to take snapshot(picture) => every single time db changes, (add\delete records )
+    // (snapshot) => all information from the '.onSnapshot' function is put into this variable.
+    // setMessages => lists messages of 'docs' from snapshot variable and map through every single (doc) && for every 'doc'
+    // doc.data() => give the data from the every doc && return as an object
+    db.collection('messages').onSnapshot((snapshot) => {
+      setMessages(snapshot.docs.map((doc) => doc.data()));
+    });
+  }, []); // [] no dependencies, run once when the 'App' component loads
 
   useEffect(() => {
     // run code here...messages
