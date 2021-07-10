@@ -7,6 +7,7 @@ import firebase from 'firebase'; // call from the actual module, && `db` above i
 import FlipMove from 'react-flip-move';
 import SendIcon from '@material-ui/icons/Send';
 import { IconButton } from '@material-ui/core';
+import GithubCorner from 'react-github-corner';
 
 function App() {
   const [input, setInput] = useState('');
@@ -66,6 +67,16 @@ function App() {
 
   return (
     <div className='App'>
+      <GithubCorner
+        href={'https://github.com/NirajanWEB'}
+        bannerColor='#000'
+        octoColor='#fff'
+        size={100}
+        direction='right'
+        target='_blank'
+        rel='noopener noreferrer'
+      />
+
       <img
         src='https://facebookbrand.com/wp-content/uploads/2020/10/Logo_Messenger_NewBlurple-399x399-1.png?w=100&h=100'
         alt='Messenger'
