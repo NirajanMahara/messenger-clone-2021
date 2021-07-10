@@ -22,9 +22,11 @@ function App() {
     // (snapshot) => all information from the '.onSnapshot' function is put into this variable.
     // setMessages => lists messages of 'docs' from snapshot variable and map through every single (doc) && for every 'doc'
     // doc.data() => give the data from the every doc && return as an object
-    db.collection('messages').onSnapshot((snapshot) => {
-      setMessages(snapshot.docs.map((doc) => doc.data()));
-    });
+    db.collection('messages')
+      .orderBy('timestamp', 'desc')
+      .onSnapshot((snapshot) => {
+        setMessages(snapshot.docs.map((doc) => doc.data()));
+      });
   }, []); // [] no dependencies, run once when the 'App' component loads
 
   useEffect(() => {
