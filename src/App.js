@@ -75,9 +75,8 @@ function App() {
 
       <form className='app__form'>
         <FormControl>
-          <InputLabel>Enter a message...💭</InputLabel>
           <Input
-            value={input}
+            placeholder='Enter a message...💭'
             onChange={(event) => setInput(event.target.value)}
           />
 
