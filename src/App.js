@@ -3,6 +3,7 @@ import { Button, FormControl, InputLabel, Input } from '@material-ui/core';
 import './App.css';
 import Message from './Message';
 import db from './firebase';
+import firebase from 'firebase'; // call from the actual module, && `db` above is from the config file
 
 function App() {
   const [input, setInput] = useState('');
@@ -45,8 +46,12 @@ function App() {
     // Prevent default refreshing when enter submit form button
     event.preventDefault();
 
-    // Spread out the messages array and append to input
-    setMessages([...messages, { username: username, text: input }]);
+    // Add/send collection of 'messages' to db
+    db.collection('messages').add({
+      message: input,
+      username: username,
+      timestamp: firebase.firestore.FieldValue.serverTimestamp(), // NEW 'fieldValue' from the 'serverTimestamp()' of the firebase.firestore
+    });
 
     // Input becomes empty string again
     setInput('');
